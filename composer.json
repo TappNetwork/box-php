@@ -1,0 +1,43 @@
+{
+  "name": "TappNetwork/box-php",
+  "description": "A minimal PHP implementation of Box API",
+  "keywords": [
+    "TappNetwork",
+    "php",
+    "box-api",
+    "box",
+    "api"
+  ],
+  "homepage": "https://github.com/TappNetwork/box-api",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Scott Grayson",
+      "email": "dscottgrayson@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.0",
+    "guzzlehttp/guzzle": "^6.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "TappNetwork\\Box\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TappNetwork\\Box\\Test\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
