@@ -66,7 +66,8 @@ class Client
      *
      * If the source path is a folder all its contents will be copied.
      *
-     * @link https://www.box.com/developers/documentation/http/documentation#files-copy_v2
+     * @link https://developer.box.com/reference#copy-a-file
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-copy_v2
      */
     public function copy(string $fromPath, string $toPath): array
     {
@@ -82,6 +83,7 @@ class Client
      * Create a folder at a given path.
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-create_folder
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-create_folder
      */
     public function createFolder(string $path): array
     {
@@ -103,17 +105,17 @@ class Client
      * The resolved visibility, though, may depend on other aspects such as team and
      * shared folder settings). Only for paid users.
      *
-     * @link https://www.box.com/developers/documentation/http/documentation#sharing-create_shared_link_with_settings
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#sharing-create_shared_link_with_settings
      */
-    public function createSharedLinkWithSettings(string $path, array $settings = [])
-    {
-        $parameters = [
-            'path' => $this->normalizePath($path),
-            'settings' => $settings,
-        ];
+    // public function createSharedLinkWithSettings(string $path, array $settings = [])
+    // {
+    //     $parameters = [
+    //         'path' => $this->normalizePath($path),
+    //         'settings' => $settings,
+    //     ];
 
-        return $this->rpcEndpointRequest('sharing/create_shared_link_with_settings', $parameters);
-    }
+    //     return $this->rpcEndpointRequest('sharing/create_shared_link_with_settings', $parameters);
+    // }
 
     /**
      * List shared links.
@@ -124,20 +126,20 @@ class Client
      * If direct_only is set true, only direct links to the path will be returned, otherwise
      * it may return link to the path itself and parent folders as described on docs.
      *
-     * @link https://www.box.com/developers/documentation/http/documentation#sharing-list_shared_links
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_shared_links
      */
-    public function listSharedLinks(string $path = null, bool $direct_only = false, string $cursor = null): array
-    {
-        $parameters = [
-            'path' => $path ? $this->normalizePath($path) : null,
-            'cursor' => $cursor,
-            'direct_only' => $direct_only,
-        ];
+    // public function listSharedLinks(string $path = null, bool $direct_only = false, string $cursor = null): array
+    // {
+    //     $parameters = [
+    //         'path' => $path ? $this->normalizePath($path) : null,
+    //         'cursor' => $cursor,
+    //         'direct_only' => $direct_only,
+    //     ];
 
-        $body = $this->rpcEndpointRequest('sharing/list_shared_links', $parameters);
+    //     $body = $this->rpcEndpointRequest('sharing/list_shared_links', $parameters);
 
-        return $body['links'];
-    }
+    //     return $body['links'];
+    // }
 
     /**
      * Delete the file or folder at a given path.
@@ -146,6 +148,7 @@ class Client
      * A successful response indicates that the file or folder was deleted.
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-delete
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-delete
      */
     public function delete(string $path): array
     {
@@ -164,6 +167,7 @@ class Client
      * @return resource
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-download
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-download
      */
     public function download(string $path)
     {
@@ -182,6 +186,7 @@ class Client
      * Note: Metadata for the root folder is unsupported.
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-get_metadata
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-get_metadata
      */
     public function getMetadata(string $path): array
     {
@@ -199,6 +204,7 @@ class Client
      * Content-Type of the link is determined automatically by the file's mime type.
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-get_temporary_link
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_link
      */
     public function getTemporaryLink(string $path): string
     {
@@ -220,6 +226,7 @@ class Client
      * Photos that are larger than 20MB in size won't be converted to a thumbnail.
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-get_thumbnail
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-get_thumbnail
      */
     public function getThumbnail(string $path, string $format = 'jpeg', string $size = 'w64h64'): string
     {
@@ -245,6 +252,7 @@ class Client
      * retry logic, please hold off the retry until the previous request finishes.
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-list_folder
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-list_folder
      */
     public function listFolder(string $path = '', bool $recursive = false): array
     {
@@ -261,6 +269,7 @@ class Client
      * retrieve updates to the folder, following the same rules as documented for list_folder.
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-list_folder-continue
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-list_folder-continue
      */
     public function listFolderContinue(string $cursor = ''): array
     {
@@ -273,6 +282,7 @@ class Client
      * If the source path is a folder all its contents will be moved.
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-move_v2
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-move_v2
      */
     public function move(string $fromPath, string $toPath): array
     {
@@ -325,6 +335,7 @@ class Client
      * Do not use this to upload a file larger than 150 MB. Instead, create an upload session with upload_session/start.
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-upload
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-upload
      *
      * @param string $path
      * @param string|resource $contents
@@ -429,6 +440,7 @@ class Client
      * This call starts a new upload session with the given data.
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-upload_session-start
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-start
      *
      * @param string|StreamInterface $contents
      * @param bool $close
@@ -453,6 +465,7 @@ class Client
      * A single request should not upload more than 150 MB.
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-upload_session-append_v2
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-append_v2
      *
      * @param string|StreamInterface $contents
      * @param UploadSessionCursor $cursor
@@ -477,6 +490,7 @@ class Client
      * A single request should not upload more than 150 MB.
      *
      * @link https://www.box.com/developers/documentation/http/documentation#files-upload_session-finish
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-finish
      *
      * @param string|StreamInterface $contents
      * @param \TappNetwork\Box\UploadSessionCursor $cursor
@@ -508,24 +522,24 @@ class Client
     /**
      * Get Account Info for current authenticated user.
      *
-     * @link https://www.box.com/developers/documentation/http/documentation#users-get_current_account
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#users-get_current_account
      *
      * @return array
      */
-    public function getAccountInfo(): array
-    {
-        return $this->rpcEndpointRequest('users/get_current_account');
-    }
+    // public function getAccountInfo(): array
+    // {
+    //     return $this->rpcEndpointRequest('users/get_current_account');
+    // }
 
     /**
      * Revoke current access token.
      *
-     * @link https://www.box.com/developers/documentation/http/documentation#auth-token-revoke
+     * @link https://www.dropbox.com/developers/documentation/http/documentation#auth-token-revoke
      */
-    public function revokeToken()
-    {
-        $this->rpcEndpointRequest('auth/token/revoke');
-    }
+    // public function revokeToken()
+    // {
+    //     $this->rpcEndpointRequest('auth/token/revoke');
+    // }
 
     protected function normalizePath(string $path): string
     {
@@ -556,7 +570,7 @@ class Client
         }
 
         try {
-            $response = $this->client->post("https://content.boxapi.com/2/{$endpoint}", [
+            $response = $this->client->post("https://content.box.com/2/{$endpoint}", [
                 'headers' => $headers,
                 'body' => $body,
             ]);
@@ -576,7 +590,7 @@ class Client
                 $options['json'] = $parameters;
             }
 
-            $response = $this->client->post("https://api.boxapi.com/2/{$endpoint}", $options);
+            $response = $this->client->post("https://api.box.com/2.0/{$endpoint}", $options);
         } catch (ClientException $exception) {
             throw $this->determineException($exception);
         }

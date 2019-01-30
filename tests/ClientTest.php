@@ -32,7 +32,7 @@ class ClientTest extends TestCase
 
         $mockGuzzle = $this->mock_guzzle_request(
             json_encode($expectedResponse),
-            'https://api.boxapi.com/2/files/copy_v2',
+            'https://api.box.com/2.0/files/copy_v2',
             [
                 'json' => [
                     'from_path' => '/from/path/file.txt',
@@ -51,7 +51,7 @@ class ClientTest extends TestCase
     {
         $mockGuzzle = $this->mock_guzzle_request(
             json_encode(['name' => 'math']),
-            'https://api.boxapi.com/2/files/create_folder',
+            'https://api.box.com/2.0/files/create_folder',
             [
                 'json' => [
                     'path' => '/Homework/math',
@@ -69,7 +69,7 @@ class ClientTest extends TestCase
     {
         $mockGuzzle = $this->mock_guzzle_request(
             json_encode(['name' => 'math']),
-            'https://api.boxapi.com/2/files/delete',
+            'https://api.box.com/2.0/files/delete',
             [
                 'json' => [
                     'path' => '/Homework/math',
@@ -93,7 +93,7 @@ class ClientTest extends TestCase
 
         $mockGuzzle = $this->mock_guzzle_request(
             $expectedResponse,
-            'https://content.boxapi.com/2/files/download',
+            'https://content.box.com/2.0/files/download',
             [
                 'headers' => [
                     'Box-API-Arg' => json_encode(['path' => '/Homework/math/answers.txt']),
@@ -112,7 +112,7 @@ class ClientTest extends TestCase
     {
         $mockGuzzle = $this->mock_guzzle_request(
             json_encode(['name' => 'math']),
-            'https://api.boxapi.com/2/files/get_metadata',
+            'https://api.box.com/2.0/files/get_metadata',
             [
                 'json' => [
                     'path' => '/Homework/math',
@@ -133,7 +133,7 @@ class ClientTest extends TestCase
                 'name' => 'math',
                 'link' => 'https://dl.boxusercontent.com/apitl/1/YXNkZmFzZGcyMzQyMzI0NjU2NDU2NDU2',
             ]),
-            'https://api.boxapi.com/2/files/get_temporary_link',
+            'https://api.box.com/2.0/files/get_temporary_link',
             [
                 'json' => [
                     'path' => '/Homework/math',
@@ -157,7 +157,7 @@ class ClientTest extends TestCase
 
         $mockGuzzle = $this->mock_guzzle_request(
             $expectedResponse,
-            'https://content.boxapi.com/2/files/get_thumbnail',
+            'https://content.box.com/2.0/files/get_thumbnail',
             [
                 'headers' => [
                     'Box-API-Arg' => json_encode(
@@ -182,7 +182,7 @@ class ClientTest extends TestCase
     {
         $mockGuzzle = $this->mock_guzzle_request(
             json_encode(['name' => 'math']),
-            'https://api.boxapi.com/2/files/list_folder',
+            'https://api.box.com/2.0/files/list_folder',
             [
                 'json' => [
                     'path' => '/Homework/math',
@@ -201,7 +201,7 @@ class ClientTest extends TestCase
     {
         $mockGuzzle = $this->mock_guzzle_request(
             json_encode(['name' => 'math']),
-            'https://api.boxapi.com/2/files/list_folder/continue',
+            'https://api.box.com/2.0/files/list_folder/continue',
             [
                 'json' => [
                     'cursor' => 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu',
@@ -227,7 +227,7 @@ class ClientTest extends TestCase
 
         $mockGuzzle = $this->mock_guzzle_request(
             json_encode($expectedResponse),
-            'https://api.boxapi.com/2/files/move_v2',
+            'https://api.box.com/2.0/files/move_v2',
             [
                 'json' => [
                     'from_path' => '/from/path/file.txt',
@@ -246,7 +246,7 @@ class ClientTest extends TestCase
     {
         $mockGuzzle = $this->mock_guzzle_request(
             json_encode(['name' => 'answers.txt']),
-            'https://content.boxapi.com/2/files/upload',
+            'https://content.box.com/2.0/files/upload',
             [
                 'headers' => [
                     'Box-API-Arg' => json_encode([
@@ -272,7 +272,7 @@ class ClientTest extends TestCase
     {
         $mockGuzzle = $this->mock_guzzle_request(
             json_encode(['session_id' => 'mockedUploadSessionId']),
-            'https://content.boxapi.com/2/files/upload_session/start',
+            'https://content.box.com/2.0/files/upload_session/start',
             [
                 'headers' => [
                     'Box-API-Arg' => json_encode(
@@ -300,7 +300,7 @@ class ClientTest extends TestCase
     {
         $mockGuzzle = $this->mock_guzzle_request(
             null,
-            'https://content.boxapi.com/2/files/upload_session/append_v2',
+            'https://content.box.com/2.0/files/upload_session/append_v2',
             [
                 'headers' => [
                     'Box-API-Arg' => json_encode(
@@ -380,7 +380,7 @@ class ClientTest extends TestCase
             json_encode([
                 'name' => 'answers.txt',
             ]),
-            'https://content.boxapi.com/2/files/upload_session/finish',
+            'https://content.box.com/2.0/files/upload_session/finish',
             [
                 'headers' => [
                     'Box-API-Arg' => json_encode([
@@ -444,7 +444,7 @@ class ClientTest extends TestCase
 
         $mockGuzzle = $this->mock_guzzle_request(
             json_encode($expectedResponse),
-            'https://api.boxapi.com/2/users/get_current_account',
+            'https://api.box.com/2.0/users/get_current_account',
             []
         );
 
@@ -458,7 +458,7 @@ class ClientTest extends TestCase
     {
         $mockGuzzle = $this->mock_guzzle_request(
             null,
-            'https://api.boxapi.com/2/auth/token/revoke',
+            'https://api.box.com/2.0/auth/token/revoke',
             []
         );
 
@@ -565,7 +565,7 @@ class ClientTest extends TestCase
     {
         $mockGuzzle = $this->mock_guzzle_request(
             json_encode(['name' => 'math']),
-            'https://api.boxapi.com/2/sharing/create_shared_link_with_settings',
+            'https://api.box.com/2.0/sharing/create_shared_link_with_settings',
             [
                 'json' => [
                     'path' => '/Homework/math',
@@ -587,7 +587,7 @@ class ClientTest extends TestCase
                 'name' => 'math',
                 'links' => ['url' => 'https://dl.boxusercontent.com/apitl/1/YXNkZmFzZGcyMzQyMzI0NjU2NDU2NDU2'],
             ]),
-            'https://api.boxapi.com/2/sharing/list_shared_links',
+            'https://api.box.com/2.0/sharing/list_shared_links',
             [
                 'json' => [
                     'path' => '/Homework/math',
